@@ -2,11 +2,27 @@
 
  orbs:
   win: circleci/windows@2.2.0
+  sonarcloud: sonarsource/sonarcloud@1.0.2
+
+ commands:
+   my-command:
+     steps:
+       - run: echo "testing an echo"
+       - run: echo "Another Echo"
+
+ executors:
+   my-python-executor:
+     docker:
+       - image: python
+   my-other-executor:
+     docker:
+       - image: nginx
 
  jobs:
    build:
-     executor: win/default     
+     executor: win/default
     
      steps:
        - checkout
+       - my-command
        - run: dotnet build
