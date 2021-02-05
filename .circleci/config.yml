@@ -21,8 +21,11 @@
  jobs:
    build:
      executor: win/default
-    
      steps:
        - checkout
        - my-command
        - run: dotnet build
+   my-python-job:
+     executor: my-python-executor
+     steps:
+       - run: echo "Hello from Python"
